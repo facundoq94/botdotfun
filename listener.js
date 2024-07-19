@@ -2,6 +2,7 @@ import WebSocket from 'ws';
 
 const ws = new WebSocket('wss://pumpportal.fun/api/data');
 
+//abrir conexion con el websocket
 ws.on('open', function open() {
 
     // Subscribing to trades on tokens
@@ -12,6 +13,8 @@ ws.on('open', function open() {
     ws.send(JSON.stringify(payload));
 });
 
+
+//data recibida del websocket
 ws.on('message', function message(data) {
     console.log(JSON.parse(data));
 });
