@@ -6,8 +6,8 @@ ws.on('open', function open() {
 
     // Subscribing to trades on tokens
     let payload = {
-        method: "subscribeTokenTrade",
-        keys: ["DejeaQBtAnx7KkvndmZBgXtyNZHZWXxUemaZpgZZpump"] // array of token CAs to watch
+        method: "subscribeAccountTrade",
+        keys: ["onixWLeJwRXvJ1iSwReWnyPtT97jxxGtdxeG9eGL9WH"] // array of token CAs to watch
     }
     ws.send(JSON.stringify(payload));
 });
