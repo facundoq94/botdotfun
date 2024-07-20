@@ -21,10 +21,11 @@ ws.on('message', async function message(data) {
     const tokenCA = eventData.mint;
     const txType = eventData.txType;
     const marketCapSol = eventData.marketCapSol;
-
+    const tokenAmount = eventData.tokenAmount;
+    const newTokenBalance = eventData.newTokenBalance;
     //obtener token data
     const tokenInfo = await getTokenInfo(tokenCA);
-    await sendTokenInfoToAPI(tokenCA, txType, marketCapSol);
+    await sendTokenInfoToAPI(tokenCA, txType, marketCapSol, tokenAmount, newTokenBalance);
     console.log(tokenInfo);
 });
 
@@ -39,7 +40,7 @@ async function getTokenInfo(tokenCA) {
     }
 }
 
-async function sendTokenInfoToAPI(tokenCA, txType, marketCapSol) {
+async function sendTokenInfoToAPI(tokenCA, txType, marketCapSol, tokenAmount, newTokenBalance) {
     const tokenInfo = await getTokenInfo(tokenCA);
 
     if (tokenInfo && tokenInfo.data) {
@@ -47,6 +48,8 @@ async function sendTokenInfoToAPI(tokenCA, txType, marketCapSol) {
             bot: bot,
             tokenCA: tokenCA,
             txType: txType,
+            tokenAmount: tokenAmount,
+            newTokenBalance: newTokenBalance,
             marketCapSol: marketCapSol,
             name: tokenInfo.data.name,
             symbol: tokenInfo.data.symbol,
