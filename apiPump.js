@@ -2,13 +2,13 @@ import WebSocket from 'ws';
 import axios from 'axios';
 
 const ws = new WebSocket('wss://rpc.api-pump.fun/ws');
-const bot = "Orca";
+const bot = "GetGuD";
 
 ws.on('open', function open() {
 
     let payload = {
         method: "subscribeAccount",
-        params: ["orcACRJYTFjTeo2pV8TfYRTpmqfoYgbVi9GeANXTCc8"]
+        params: ["GetGuDsE4Nbbf9bhhQbhmDn3tJo8vTw5Jnu4fFantpB"]
     }
     ws.send(JSON.stringify(payload));
 });
